@@ -29,4 +29,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('Inventario', 'InventarioController@getIndex');
+
+
+Route::get('/Inventario', function () {
+    return view('Inventario');
+});
