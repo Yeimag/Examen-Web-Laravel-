@@ -17,7 +17,6 @@ Route::post('/submit', function(Request $request) {
             ->withErrors($validator);
     }
     $link = new \App\Link;
-    $link->Identificador = $request->Identificador;
     $link->Nombre = $request->Nombre;
     $link->Marca = $request->Marca;
     $link->Familia = $request->Familia;
