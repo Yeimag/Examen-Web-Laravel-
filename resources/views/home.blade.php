@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.css"  rel="stylesheet">
+<nav>
+    <div class="nav-wrapper">
+        <a href="" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{{ url('/Inventario') }}">Inventario</a></li>
+            <li><a href="{{ url('/productos') }}">Productos </a></li>
+            <li><a href="{{ url('/proveedores') }}">Proveedores</a></li>
+            <li><a href="{{ url('/MovimientosInventario') }}">Movimientos Inventario</a></li>
+        </ul>
     </div>
-</div>
+</nav>
 @endsection
