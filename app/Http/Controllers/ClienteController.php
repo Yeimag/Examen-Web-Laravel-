@@ -16,7 +16,7 @@ class ClienteController extends BaseController {
     public function index()
     {
         $clientes = Cliente::all();
-        return view('cliente.index', ['clientes'=>$clientes]);//
+        return view('cliente.verCliente', ['clientes'=>$clientes]);//
     }
 
     /**
