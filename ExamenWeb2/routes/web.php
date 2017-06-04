@@ -34,3 +34,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Inventario', function () {
     return view('Inventario');
 });
+
+Route::get('/productos', function () {
+    return view('productos');
+});
+
+Route::get('/proveedores', function () {
+    return view('proveedores');
+});

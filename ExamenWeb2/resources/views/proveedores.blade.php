@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h1>Clientes</h1>
+            <h1>Ingreso de clientes</h1>
             <form action="/submit" method="post">
                 {!! csrf_field() !!}
                 <div class="form-group">
