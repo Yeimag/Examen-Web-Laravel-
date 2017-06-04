@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateMovimientosInventarioTable extends Migration
 {
@@ -15,9 +16,9 @@ class CreateMovimientosInventarioTable extends Migration
     {
         Schema::create('movimientos_inventario', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('producto',50);
+            $table->integer('productoID');
             $table->integer('cantidad');
-            $table->date('fecha_update');
+            $table->date('fecha_update')->default(Carbon::now());
             $table->timestamps();
         });
     }

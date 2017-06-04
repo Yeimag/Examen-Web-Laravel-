@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateProductosTable extends Migration
 {
@@ -21,8 +22,8 @@ class CreateProductosTable extends Migration
             $table->string('casa_fabricacion',50);
             $table->string('tipo_unidad',50);
             $table->string('departamento',50);
-            $table->integer('activo');
-            $table->date('fecha_ingreso');
+            $table->integer('activo')->unique();
+            $table->date('fecha_ingreso')->default(Carbon::now());
             $table->integer('unidad');
             $table->smallInteger('impuesto')->default(0);
         });

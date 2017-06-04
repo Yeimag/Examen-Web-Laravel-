@@ -15,7 +15,7 @@ class CreateInventarioTable extends Migration
     {
         Schema::create('inventario', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('producto',50);
+            $table->integer('productoID');
             $table->integer('cantidad');
             $table->integer('cantidad_min');
             $table->integer('cantidad_max');

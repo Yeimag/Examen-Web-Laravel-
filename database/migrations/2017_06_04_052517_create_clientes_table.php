@@ -14,7 +14,7 @@ class CreateClientesTable extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->string('cedula',9);
+            $table->string('cedula',9)->unique()->primary();
             $table->string('nombre',50);
             $table->string('apellido',50);
             $table->date('fecha_nacimiento');

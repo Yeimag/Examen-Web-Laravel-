@@ -15,7 +15,9 @@ class CreateMovimientoInventarioDetalleTable extends Migration
     {
         Schema::create('movimientos_inventario_detalle', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('productoID');
+            $table->integer('cantidad_anterior');
+            $table->integer('nueva_cantidad');
         });
     }
 
