@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.css"  rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -65,6 +66,22 @@
         </style>
     </head>
     <body>
+
+        <nav>
+          <div class="nav-wrapper">
+            <a href="" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="{{ url('/Inventario') }}">Inventario</a></li>
+              <li><a href="{{ url('/productos') }}">Productos </a></li>
+              <li><a href="{{ url('/proveedores') }}">Proveedores</a></li>
+              <li><a href="{{ url('/MovimientosInventario') }}">Movimientos Inventario</a></li>
+            </ul>
+          </div>
+        </nav>
+
+
+
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
