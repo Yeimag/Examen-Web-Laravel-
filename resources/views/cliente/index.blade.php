@@ -2,7 +2,6 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <h1>Vista de cliente</h1>
             <div class="panel-body">
                 <table class="table table-hover">
                     <thead>
