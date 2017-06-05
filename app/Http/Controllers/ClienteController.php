@@ -1,12 +1,15 @@
-// app/controllers/ClienteController.php
-
 <?php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
+use examenweblaravel;
+class ClienteController extends Controller {
 
-class ClienteController extends BaseController {
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
 
     /**
      * Display a listing of the resource.
@@ -16,8 +19,9 @@ class ClienteController extends BaseController {
     public function index()
     {
        
-      $clientes = Cliente::all();
-        return View::make('cliente.index')->with('clientes', $clientes);
+      $clientes = DB::table('clientes')->get();
+      return view('cliente.index',['clientes'=>$clientes]);
+        //return View::make('cliente.index',['clientes'=> $clientes]);
         //return view('cliente.index', ['clientes'=>$clientes]);//
     }
 
@@ -78,7 +82,7 @@ class ClienteController extends BaseController {
             abort(404);
          }
 
-         return view('cliente.index')->with('cliente',$cliente);
+         return view('cliente.detail')->with('cliente',$cliente);
         //
     }
 

@@ -77,7 +77,12 @@ class InventarioController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        $inventario = Inventario::find($id);
+        $inventario->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted!');
+        return Redirect::to('inventario');
     }
 
 }
