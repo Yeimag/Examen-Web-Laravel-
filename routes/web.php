@@ -34,13 +34,18 @@ Route::get('/NuevoInventario', function () {
 });
 
 Route::get('/NuevoProducto', function () {
-    return view('productos');
+    return view('NuevosProductos');
 });
 
-Route::get('/proveedores', function () {
-    return view('proveedores');
+Route::get('/NuevoCliente', function () {
+    return view('NuevoCliente');
 });
-
+Route::get('/MovimientosInventario', function () {
+    return view('MovimientosInventario');
+});
+Route::get('/ModificarCliente', function () {
+    return view('ModificarCliente');
+});
 /*Route::group(['middleware' => ['web']], function(){
     Route::resource('/cliente', 'ClientesController');
 });
