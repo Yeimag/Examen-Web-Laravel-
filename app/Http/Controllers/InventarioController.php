@@ -1,8 +1,15 @@
-// app/controllers/NerdController.php
-
 <?php
+namespace App\Http\Controllers;
 
-class InventarioController extends BaseController {
+use Illuminate\Http\Request;
+use App\Cliente;
+use examenweblaravel;
+class InventarioController extends Controller {
+
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
 
     /**
      * Display a listing of the resource.
@@ -11,9 +18,11 @@ class InventarioController extends BaseController {
      */
     public function index()
     {
-        $inventario = Inventario::all();
-        return View::make('inventario.index')
-            ->with('inventario', $inventario);
+       
+      $inventario = DB::table('inventario')->get();
+      return view('inventario.index',['inventario'=>$clientes]);
+        //return View::make('cliente.index',['clientes'=> $clientes]);
+        //return view('cliente.index', ['clientes'=>$clientes]);//
     }
 
     /**
@@ -23,7 +32,8 @@ class InventarioController extends BaseController {
      */
     public function create()
     {
-         return View::make('inventario.create');
+        return view('inventario.create');
+        //
     }
 
     /**
@@ -31,9 +41,26 @@ class InventarioController extends BaseController {
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+          'id'=>'required',
+          'productoID'=>'required',
+          'cantidad'=>'required',
+          'cantidad_min'=>'required',
+          'cantidad_max'=>'required',
+          'excepto'=>'required',
+      ]);
+      $inventario = new Cliente;
+      $inventario->id = $request->id;
+      $inventario->productoID = $request->productoID;
+      $inventario->cantidad = $request->cantidad;
+      $inventario->cantidad_min = $request->cantidad_min;
+      $inventario->cantidad_max = $request->cantidad_max;
+      $inventario->excepto = $request->excepto;
+      $inventario->save();
+
+      return redirect('inventario')->with('message','data has been updated!');
     }
 
     /**
@@ -44,6 +71,12 @@ class InventarioController extends BaseController {
      */
     public function show($id)
     {
+        $inventario = Inventario::find($id);
+        if(!$inventario){
+            abort(404);
+         }
+
+         return view('inventario.detail')->with('inventario',$inventario);
         //
     }
 
@@ -55,7 +88,12 @@ class InventarioController extends BaseController {
      */
     public function edit($id)
     {
-        //
+        $inventario = Inventario::find($id);
+
+        if(!$inventario){
+             abort(404);
+        }
+        return view('inventario.edit')->with('inventario',$inventario);
     }
 
     /**
@@ -64,9 +102,26 @@ class InventarioController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validate($request,[
+          'id'=>'required',
+          'productoID'=>'required',
+          'cantidad'=>'required',
+          'cantidad_min'=>'required',
+          'cantidad_max'=>'required',
+          'excepto'=>'required',
+      ]);
+      $inventario = new Inventario;
+      $inventario->id = $request->id;
+      $inventario->productoID = $request->productoID;
+      $inventario->cantidad = $request->cantidad;
+      $inventario->cantidad_min = $request->cantidad_min;
+      $inventario->cantidad_max = $request->cantidad_max;
+      $inventario->excepto = $request->excepto;
+      $inventario->save();
+
+      return redirect('inventario')->with('message','data has been updated!');
     }
 
     /**
@@ -81,7 +136,7 @@ class InventarioController extends BaseController {
         $inventario->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted!');
+        Session::flash('message', 'Successfully deleted the client!');
         return Redirect::to('inventario');
     }
 

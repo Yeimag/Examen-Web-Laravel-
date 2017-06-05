@@ -33,8 +33,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['web']], function(){
     Route::resource('/cliente', 'ClienteController');
 });
-
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/inventario', 'InventarioController');
+});
 
 //Route::resource('clientes', 'ClienteController');
 
-Route::resource('inventario', 'InventarioController');
+//Route::resource('inventario', 'InventarioController');

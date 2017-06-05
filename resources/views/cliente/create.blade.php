@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
      <div class="row">
-        <form class="form-horizontal" role="form" action="{{ url('/cliente') }}" method="post">               
+        <form class="form-horizontal" role="form" action="cliente/store " method="post">               
                 <div class="form-group">
                     <label for="cedula">Cedula</label>
                     <input type="text" class="form-control" id="cedula" name="cedula" placeholder="8-888-888" required="required" title="e.g 8-888-888" pattern="^\[0-9]{1}-[0-9]{3}-[0-9]{4}$">
