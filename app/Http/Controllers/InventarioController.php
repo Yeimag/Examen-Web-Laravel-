@@ -1,22 +1,83 @@
-Route::post('/submit', function(Request $request) {
-    $validator = Validator::make($request->all(), [
-        'Producto' => 'required|max:50',
-        'Cantidad' => 'required|max:50',
-        'CantidadMinima' => 'required|max:50',
-        'CantidadMaxima' => 'required|max:50',
-        'Gravado' => 'required|max:50',
-    ]);
-    if ($validator->fails()) {
-        return back()
-            ->withInput()
-            ->withErrors($validator);
+// app/controllers/NerdController.php
+
+<?php
+
+class InventarioController extends BaseController {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $inventario = Inventario::all();
+        return View::make('inventario.index')
+            ->with('inventario', $inventario);
     }
-    $link = new \App\Link;
-    $link->Producto = $request->Producto;
-    $link->Cantidad = $request->Cantidad;
-    $link->CantidadMinima = $request->CantidadMinima;
-    $link->CantidadMaxima = $request->CantidadMaxima;
-    $link->Gravado = $request->Gravado;
-    $link->save();
-    return redirect('/');
-});
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+         return View::make('inventario.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+}
