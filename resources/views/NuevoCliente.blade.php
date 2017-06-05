@@ -32,8 +32,6 @@
                         <input type="radio" name="EstadoCivil" value="Casado"> Casado(a)
                         <input type="radio" name="EstadoCivil" value="Divorciado"> Divorciado(a)
                         <input type="radio" name="EstadoCivil" value="Viudo"> Viudo(a)
-                        <input type="radio" name="EstadoCivil" value="UnionLibre"> Union Libre<br>
-                </div>
                 <div class="form-group">
                     <label for="Sexo">Sexo</label><br>
                     <input type="radio" name="EstadoCivil" value="Masculino"> Masculino

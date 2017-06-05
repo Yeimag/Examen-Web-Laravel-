@@ -29,14 +29,30 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/Inventario', function () {
+Route::get('/NuevoInventario', function () {
     return view('Inventario');
 });
 
-Route::get('/productos', function () {
+Route::get('/NuevoProducto', function () {
     return view('productos');
 });
 
 Route::get('/proveedores', function () {
     return view('proveedores');
 });
+
+/*Route::group(['middleware' => ['web']], function(){
+    Route::resource('/cliente', 'ClientesController');
+});
+
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/facturacion', 'FacturacionController');
+});
+
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/inventario', 'InventarioController');
+});
+
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/producto', 'ProductosController');
+});*/
