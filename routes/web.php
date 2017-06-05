@@ -30,7 +30,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/NuevoInventario', function () {
-    return view('Inventario');
+    return view('NuevoInventario');
 });
 
 Route::get('/NuevoProducto', function () {
