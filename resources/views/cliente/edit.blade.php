@@ -2,7 +2,6 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h1>Ingreso de clientes</h1>
             <form class="form-horizontal" role="form" action="/cliente/{{ $cliente->id }}" method="post">
                 <div class="form-group">
                     <label for="Cedula">Cedula</label>
