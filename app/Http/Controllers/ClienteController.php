@@ -17,12 +17,9 @@ class ClienteController extends Controller {
      * @return Response
      */
     public function index()
-    {
-       
+    { 
       $clientes = DB::table('clientes')->get();
       return view('cliente.index',['clientes'=>$clientes]);
-        //return View::make('cliente.index',['clientes'=> $clientes]);
-        //return view('cliente.index', ['clientes'=>$clientes]);//
     }
 
     /**
@@ -32,8 +29,7 @@ class ClienteController extends Controller {
      */
     public function create()
     {
-        return view('cliente.create');
-        //
+        return view('cliente.create');//Se va a la vista create
     }
 
     /**
@@ -41,7 +37,7 @@ class ClienteController extends Controller {
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//crea un nuevo cliente
     {
         $this->validate($request,[
           'cedula'=>'required',
@@ -75,7 +71,7 @@ class ClienteController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         $cliente = Cliente::find($id);
         if(!$cliente){
@@ -84,7 +80,7 @@ class ClienteController extends Controller {
 
          return view('cliente.detail')->with('cliente',$cliente);
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.

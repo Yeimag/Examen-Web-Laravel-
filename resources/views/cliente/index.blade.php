@@ -3,6 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel-body">
+              <a href="/cliente/create" class="btn btn-primary" role="button">Nuevo</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -32,7 +33,6 @@
                                 <th>{{ $cliente->Descuento}}</th>
                                 <th>
                                    <p>
-                                     <a href="/cliente/{{ $cliente->id }}" class="btn btn-info" role="button">Ver Detalle</a>
                                      <a href="/cliente/{{ $cliente->id }}/edit" class="btn btn-primary" role="button">Editar</a>
                                      <a href="/cliente/{{ $cliente->id }}/delete" class="btn btn-primary" role="button">Eliminar</a>
                                   </p>
