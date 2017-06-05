@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <nav>
     <div class="nav-wrapper">
