@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
      <div class="row">
-        <form class="form-horizontal" role="form" action={{ url('/inventario') }} method="post">               
+        <form class="form-horizontal" role="form" action={{ route('inventario.store') }} method="post">               
             <div class="form-group">
                 <label for="productoID">Producto</label>
                 <input type="number" class="form-control" id="productoID" name="productoID" placeholder="ID Producto" required="required" title="e.g 425">
@@ -33,3 +33,4 @@
     </div>
 </div>
 @endsection
+                

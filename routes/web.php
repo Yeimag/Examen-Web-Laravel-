@@ -28,4 +28,6 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::resource('cliente','ClientesController');
 
 	Route::resource('producto','ProductosController');
+
+	Route::resource('inventario','InventariosController')
 });
