@@ -12,9 +12,9 @@
                 <div class="panel-body">
                     You are logged in!
                     <div>
-                        <a href="{{ route('cliente.index') }} class="btn btn-primary" role="button"">Cliente</a>
-                        <a href="{{ route('invetario.index') }} class="btn btn-primary" role="button"">Inventario</a>
-                        <a href="{{ route('producto.index') }} class="btn btn-primary" role="button"">Producto</a>
+                        <a href="{{route('cliente.index')}}" class="btn btn-primary" role="button">Cliente</a>
+                        <a href="{{route('inventario.index')}}" class="btn btn-primary" role="button">Inventario</a>
+                        <a href="{{route('producto.index')}}" class="btn btn-primary" role="button">Producto</a>
                     </div>
                     
                 </div>
