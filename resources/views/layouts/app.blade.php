@@ -26,11 +26,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
+                    
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    @if (Route::has('login'))
+                        @if (Auth::check())
+                            <a class="navbar-brand" href="{{ url(route('home')) }}">{{ config('app.name', 'Laravel') }} </a>
+                        @else
+                            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }} </a>
+                        @endif
+                    @endif
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
