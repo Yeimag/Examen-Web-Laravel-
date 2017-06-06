@@ -1,12 +1,15 @@
-// app/controllers/ClienteController.php
-
 <?php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
+use examenweblaravel;
+class ClienteController extends Controller {
 
-class ClienteController extends BaseController {
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
 
     /**
      * Display a listing of the resource.
@@ -14,9 +17,9 @@ class ClienteController extends BaseController {
      * @return Response
      */
     public function index()
-    {
-        $clientes = Cliente::all();
-        return view('cliente.verCliente', ['clientes'=>$clientes]);//
+    { 
+      $clientes = DB::table('clientes')->get();
+      return view('cliente.index',['clientes'=>$clientes]);
     }
 
     /**
@@ -26,8 +29,7 @@ class ClienteController extends BaseController {
      */
     public function create()
     {
-        return view('cliente.nuevoCliente');
-        //
+        return view('cliente.create');//Se va a la vista create
     }
 
     /**
@@ -35,28 +37,28 @@ class ClienteController extends BaseController {
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//crea un nuevo cliente
     {
         $this->validate($request,[
           'cedula'=>'required',
           'nombre'=>'required',
           'apellido'=>'required',
-          'fechaNacimiento'=>'required',
+          'fecha_nacimiento'=>'required',
           'direccion'=>'required',
-          'estadoCivil'=>'required',
+          'estado_civil'=>'required',
           'sexo'=>'required',
-          'fechaIngreso'=>'required',
-          'descueto'=>'required',
+          'fecha_ingreso'=>'required',
+          'descuento'=>'required',
       ]);
       $cliente = new Cliente;
       $cliente->cedula = $request->cedula;
       $cliente->nombre = $request->nombre;
       $cliente->apellido = $request->apellido;
-      $cliente->fechaNacimiento = $request->fechaNacimiento;
+      $cliente->fecha_nacimiento = $request->fechaNacimiento;
       $cliente->direccion = $request->direccion;
-      $cliente->estadoCivil = $request->estadoCivil;
+      $cliente->estado_civil = $request->estadoCivil;
       $cliente->sexo = $request->sexo;
-      $cliente->fechaIngreso = $request->fechaIngreso;
+      $cliente->fecha_ingreso = $request->fechaIngreso;
       $cliente->descuento = $request->descuento;
       $cliente->save();
 
@@ -69,16 +71,16 @@ class ClienteController extends BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         $cliente = Cliente::find($id);
         if(!$cliente){
             abort(404);
          }
 
-         return view('cliente.verCliente')->with('cliente',$cliente);
+         return view('cliente.detail')->with('cliente',$cliente);
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
@@ -93,7 +95,7 @@ class ClienteController extends BaseController {
         if(!$cliente){
              abort(404);
         }
-        return view('cliente.modificarCliente')->with('cliente',$cliente);
+        return view('cliente.edit')->with('cliente',$cliente);
     }
 
     /**
@@ -108,22 +110,22 @@ class ClienteController extends BaseController {
           'cedula'=>'required',
           'nombre'=>'required',
           'apellido'=>'required',
-          'fechaNacimiento'=>'required',
+          'fecha_nacimiento'=>'required',
           'direccion'=>'required',
-          'estadoCivil'=>'required',
+          'estado_civil'=>'required',
           'sexo'=>'required',
-          'fechaIngreso'=>'required',
-          'descueto'=>'required',
+          'fecha_ingreso'=>'required',
+          'descuento'=>'required',
       ]);
       $cliente = Cliente::find($id);
       $cliente->cedula = $request->cedula;
       $cliente->nombre = $request->nombre;
       $cliente->apellido = $request->apellido;
-      $cliente->fechaNacimiento = $request->fechaNacimiento;
+      $cliente->fecha_nacimiento = $request->fechaNacimiento;
       $cliente->direccion = $request->direccion;
-      $cliente->estadoCivil = $request->estadoCivil;
+      $cliente->estado_civil = $request->estadoCivil;
       $cliente->sexo = $request->sexo;
-      $cliente->fechaIngreso = $request->fechaIngreso;
+      $cliente->fecha_ingreso = $request->fechaIngreso;
       $cliente->descuento = $request->descuento;
       $cliente->save();
 
@@ -138,7 +140,12 @@ class ClienteController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the client!');
+        return Redirect::to('clientes');
     }
 
 }

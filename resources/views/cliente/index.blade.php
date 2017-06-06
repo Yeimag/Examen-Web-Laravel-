@@ -3,6 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel-body">
+              <a href="/cliente/create" class="btn btn-primary" role="button">Nuevo</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -15,6 +16,7 @@
                            <th>Sexo</th>
                            <th>Fecha Ingreso</th>
                            <th>Descuento</th>
+                           <th>Funcion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +31,12 @@
                                 <th>{{ $cliente->Sexo }}</th>
                                 <th>{{ $cliente->fechaIngreso }}</th>
                                 <th>{{ $cliente->Descuento}}</th>
+                                <th>
+                                   <p>
+                                     <a href="/cliente/{{ $cliente->id }}/edit" class="btn btn-primary" role="button">Editar</a>
+                                     <a href="/cliente/{{ $cliente->id }}/delete" class="btn btn-primary" role="button">Eliminar</a>
+                                  </p>
+                                 </th>
                             </tr>
                         @endforeach
                     </tbody>

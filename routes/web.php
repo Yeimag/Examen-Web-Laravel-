@@ -19,35 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/NuevoInventario', function () {
-    return view('NuevoInventario');
-});
-
-Route::get('/NuevoProducto', function () {
-    return view('NuevosProductos');
-});
-
-Route::get('/NuevoCliente', function () {
-    return view('NuevoCliente');
-});
-Route::get('/MovimientosInventario', function () {
-    return view('MovimientosInventario');
-});
-Route::get('/ModificarCliente', function () {
-    return view('ModificarCliente');
-});
-/*Route::group(['middleware' => ['web']], function(){
-    Route::resource('/cliente', 'ClientesController');
-});
 
 Route::group(['middleware' => ['web']], function(){
-    Route::resource('/facturacion', 'FacturacionController');
+    Route::resource('/cliente', 'ClienteController');
 });
-
 Route::group(['middleware' => ['web']], function(){
     Route::resource('/inventario', 'InventarioController');
 });
 
-Route::group(['middleware' => ['web']], function(){
-    Route::resource('/producto', 'ProductosController');
-});*/
+//Route::resource('clientes', 'ClienteController');
+
+//Route::resource('inventario', 'InventarioController');
