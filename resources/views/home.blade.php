@@ -10,7 +10,8 @@
 
                 <div class="panel-body">
                     You are logged in!
-                    <a href="{{ route('cliente.create') }}">cliente</a>
+                    <a href="{{ route('cliente.index') }}">cliente</a>
+                    <a href="{{ route('producto.index') }}">producto</a>
                 </div>
             </div>
         </div>

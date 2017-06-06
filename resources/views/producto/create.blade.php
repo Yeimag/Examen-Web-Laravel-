@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
      <div class="row">
-        <form class="form-horizontal" role="form" action={{ url('/producto') }} method="post">               
+        <form class="form-horizontal" role="form" action={{ route('producto.store') }} method="post">               
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto" required="required">
@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" id="familia" name="familia" placeholder="Familia"></input>
                 </div>
                 <div class="form-group">
-                    <label for="casa_fabricacion">Fecha de nacimiento</label>
+                    <label for="casa_fabricacion">Casa de Fabricacion</label>
                     <input type="text" class="form-control" id="casa_fabricacion" name="casa_fabricacion" placeholder="Casa de Fabricación"></input>
                 </div>
                 <div class="form-group">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="unidad">Unidad</label>
-                    <input type="text" class="form-control" id="unidad" name="unidad" placeholder="Unidad"></input>
+                    <input type="number" class="form-control" id="unidad" name="unidad" placeholder="Unidad"></input>
                 </div>
                 <div class="form-group">
                     <label for="impuesto">Impuesto</label>

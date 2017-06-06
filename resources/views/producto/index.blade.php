@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel-body">
-              <a href="/producto/create" class="btn btn-primary" role="button">Nuevo</a>
+              <a href="{{ route('producto.create') }}" class="btn btn-primary" role="button">Nuevo</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -36,10 +36,15 @@
                                 <th>{{ $producto->impuesto}}</th>
                                 <th>
                                    <p>
-                                     <a href="/producto/{{ $producto->id }}/edit" class="btn btn-primary" role="button">Editar</a>
-                                     <a href="/producto/{{ $producto->id }}/delete" class="btn btn-primary" role="button">Eliminar</a>
-                                  </p>
-                                 </th>
+                                      <a href="{{route('producto.index')}}/{{ $producto->id }}/edit" class="btn btn-primary" role="button">Editar</a>
+                                     
+                                      <form action="{{route('producto.index')}}/{{ $producto->id }}" method="POST">
+                                        <input type="submit" value="Eliminar">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                      </form>
+                                    </p>
+                                </th>
                             </tr>
                         @endforeach
                     </tbody>
