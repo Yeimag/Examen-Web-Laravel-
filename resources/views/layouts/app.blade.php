@@ -1,4 +1,3 @@
-{!! MaterializeCSS::include_full() !!}
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -20,10 +19,10 @@
         <nav>
           <div class="nav-wrapper">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="{{ url('/Inventario') }}">Inventario</a></li>
+              <li><a href="{{ url('/inventario') }}">Inventario</a></li>
               <li><a href="{{ url('/productos') }}">Productos </a></li>
-              <li><a href="{{ url('/proveedores') }}">Proveedores</a></li>
-              <li><a href="{{ url('/MovimientosInventario') }}">Movimientos Inventario</a></li>
+              <li><a href="{{ url('/cliente') }}">Clientes</a></li>
+              <li><a href="{{ url('/movimientos_inventario') }}">Movimientos Inventario</a></li>
             </ul>
           </div>
         </nav>

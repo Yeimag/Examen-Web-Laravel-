@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
-use examenweblaravel;
+use DB;
 class ClienteController extends Controller {
 
     /*public function __construct()
@@ -18,7 +18,7 @@ class ClienteController extends Controller {
      */
     public function index()
     { 
-      $clientes = DB::table('clientes')->get();
+      $clientes = Cliente::all(); 
       return view('cliente.index',['clientes'=>$clientes]);
     }
 
@@ -50,19 +50,19 @@ class ClienteController extends Controller {
           'fecha_ingreso'=>'required',
           'descuento'=>'required',
       ]);
-      $cliente = new Cliente;
-      $cliente->cedula = $request->cedula;
-      $cliente->nombre = $request->nombre;
-      $cliente->apellido = $request->apellido;
-      $cliente->fecha_nacimiento = $request->fechaNacimiento;
-      $cliente->direccion = $request->direccion;
-      $cliente->estado_civil = $request->estadoCivil;
-      $cliente->sexo = $request->sexo;
-      $cliente->fecha_ingreso = $request->fechaIngreso;
-      $cliente->descuento = $request->descuento;
-      $cliente->save();
+      $clientes = new Cliente;
+      $clientes->cedula = $request->cedula;
+      $clientes->nombre = $request->nombre;
+      $clientes->apellido = $request->apellido;
+      $clientes->fecha_nacimiento = $request->fecha_nacimiento;
+      $clientes->direccion = $request->direccion;
+      $clientes->estado_civil = $request->estado_civil;
+      $clientes->sexo = $request->sexo;
+      $clientes->fecha_ingreso = $request->fecha_ingreso;
+      $clientes->descuento = $request->descuento;
+      $clientes->save();
 
-      return redirect('cliente')->with('message','data has been updated!');
+      return redirect('clientes')->with('message','data has been updated!');
     }
 
     /**
@@ -88,14 +88,14 @@ class ClienteController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($cedula)
     {
-        $cliente = Cliente::find($id);
+        $clientes = Cliente::find($cedula);
 
-        if(!$cliente){
+        if(!$clientes){
              abort(404);
         }
-        return view('cliente.edit')->with('cliente',$cliente);
+        return view('cliente.edit')->with('cliente',$clientes);
     }
 
     /**
@@ -104,7 +104,7 @@ class ClienteController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,$cedula)
     {
         $this->validate($request,[
           'cedula'=>'required',
@@ -117,19 +117,19 @@ class ClienteController extends Controller {
           'fecha_ingreso'=>'required',
           'descuento'=>'required',
       ]);
-      $cliente = Cliente::find($id);
-      $cliente->cedula = $request->cedula;
-      $cliente->nombre = $request->nombre;
-      $cliente->apellido = $request->apellido;
-      $cliente->fecha_nacimiento = $request->fechaNacimiento;
-      $cliente->direccion = $request->direccion;
-      $cliente->estado_civil = $request->estadoCivil;
-      $cliente->sexo = $request->sexo;
-      $cliente->fecha_ingreso = $request->fechaIngreso;
-      $cliente->descuento = $request->descuento;
-      $cliente->save();
+      $clientes = Cliente::find($cedula);
+      $clientes->cedula = $request->cedula;
+      $clientes->nombre = $request->nombre;
+      $clientes->apellido = $request->apellido;
+      $clientes->fecha_nacimiento = $request->fechaNacimiento;
+      $clientes->direccion = $request->direccion;
+      $clientes->estado_civil = $request->estadoCivil;
+      $clientes->sexo = $request->sexo;
+      $clientes->fecha_ingreso = $request->fechaIngreso;
+      $clientes->descuento = $request->descuento;
+      $clientes->save();
 
-      return redirect('cliente')->with('message','data has been updated!');
+      return redirect('clientes')->with('message','data has been updated!');
     }
 
     /**
@@ -138,10 +138,10 @@ class ClienteController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($cedula)
     {
-        $cliente = Cliente::find($id);
-        $cliente->delete();
+        $clientes = Cliente::find($cedula);
+        $clientes->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted the client!');

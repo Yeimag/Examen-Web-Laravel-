@@ -20,9 +20,10 @@ class CreateClientesTable extends Migration
             $table->date('fecha_nacimiento');
             $table->string('direccion',250);
             $table->string('estado_civil',20);
-            $table->string('sexo',1);
+            $table->string('sexo',10);
             $table->date('fecha_ingreso');
             $table->smallInteger('descuento')->default(0);
+
         });
     }
 
