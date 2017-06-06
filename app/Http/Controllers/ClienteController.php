@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
-use examenweblaravel;
+use App\Clientes;
+
 class ClienteController extends Controller {
 
     /*public function __construct()
