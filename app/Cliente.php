@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Clientes extends Model
+class Cliente extends Model
 {
-	public $timestamps = false;
+    public $timestamps = false;
+    protected $primaryKey = 'cedula';
     protected $table = 'clientes';
 
     protected $fillable = [

@@ -7,8 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0",
-        "skydiver/laravel-materialize-css": "dev-master"
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -41,8 +40,7 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize",
-            "php artisan vendor:publish --tag=materializecss --force"
+            "php artisan optimize"
         ]
     },
     "config": {

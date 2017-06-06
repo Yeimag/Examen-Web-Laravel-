@@ -12,33 +12,18 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
+    return view('welcome');
 });
 
-Auth::routes();
+Route::group(['middleware'=>'web'], function (){
 
-Route::get('/home', 'HomeController@index')->name('home');
+	Auth::routes();
 
-
-
-//Route::delete('/bu', 'ClienteController@delete(cedula)');
-
-Route::group(['middleware' => ['web']], function(){
-    Route::resource('/cliente', 'ClienteController');
 });
 
-Route::group(['middleware' => ['web']], function(){
-    Route::resource('/inventario', 'InventarioController');
+Route::group(['prefix' => 'admin'], function(){
+
+	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::resource('cliente','ClientesController');
 });
-
-Route::group(['middleware' => ['web']], function(){
-    Route::resource('/producto', 'ProductosController');
-});
-
-
-Route::get('/destroyCliente/{id}', 'ClienteController@destroy');
-
-
-//Route::resource('clientes', 'ClienteController');
-
-//Route::resource('inventario', 'InventarioController');

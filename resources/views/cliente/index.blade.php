@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel-body">
-              <a href="/cliente/create" class="btn btn-primary" role="button">Nuevo</a>
+              <a href="{{ route('cliente.create') }}" class="btn btn-primary" role="button">Nuevo</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -33,8 +33,15 @@
                                 <th>{{ $cliente->descuento}}</th>
                                 <th>
                                    <p>
-                                     <a href="/cliente/{{ $cliente->cedula }}/edit" class="btn btn-primary"  role="button">Editar</a>
-                                     <a href="{{url('/destroyCliente',[$cliente->cedula])}}" class="btn btn-primary" role="button">Eliminar</a>
+                                     <a href="{{route('cliente.index')}}/{{ $cliente->cedula }}/edit" class="btn btn-primary" role="button">Editar</a>
+                                     
+                                     <form action="{{route('cliente.index')}}/{{ $cliente->cedula }}" method="POST">
+                                       <input type="submit" value="Eliminar">
+                                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                       <input type="hidden" name="_method" value="DELETE">
+                                     </form>
+
+                                     <!--a href="{{route('cliente.index')}}/{{ $cliente->cedula }}" class="btn btn-primary" role="button">Eliminar</a-->
                                   </p>
                                  </th>
                             </tr>

@@ -2,26 +2,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" role="form" action="/cliente/{{ $cliente->cedula }}" method="post">
+            <form class="form-horizontal" role="form" action="{{route('cliente.index')}}/{{ $cliente->cedula }}" method="POST">
                 <div class="form-group">
-                    <label for="Cedula">Cedula</label>
-                    <input type="text" class="form-control" id="Cedula" name="Cedula" value="{{ $cliente->Cedula }}" placeholder="{{ $cliente->Cedula }}" required="required" title="e.g 8-888-888" pattern="^\[0-9]{1}-[0-9]{3}-[0-9]{3}$">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $cliente->Nombre}}" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                    <label for="Nombre">Nombre</label>
-                    <input type="text" class="form-control" id="Nombre" name="Nombre" value="{{ $cliente->Nombre}}" placeholder="Nombre">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" value="{{ $cliente->Apellido}}" placeholder="Apellido"></input>
                 </div>
                 <div class="form-group">
-                    <label for="Apellido">Apellido</label>
-                    <input type="text" class="form-control" id="Apellido" name="Apellido" value="{{ $cliente->Apellido}}" placeholder="Apellido"></input>
+                    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ $cliente->FechaNacimiento}}" placeholder="YYYY/DD/MM"></input>
                 </div>
                 <div class="form-group">
-                    <label for="FechaNacimiento">Fecha de nacimiento</label>
-                    <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" value="{{ $cliente->FechaNacimiento}}" placeholder="YYYY/DD/MM"></input>
-                </div>
-                <div class="form-group">
-                    <label for="Direccion">Direccion</label>
-                    <input type="text" class="form-control" id="Direccion" name="Direccion" value="{{ $cliente->Direccion}}" placeholder="Direccion"></input>
+                    <label for="direccion">Direccion</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" value="{{ $cliente->Direccion}}" placeholder="Direccion"></input>
                 </div>
 
                 <div class="form-group">
@@ -53,7 +49,7 @@
                         </div>
                     </div>
                 <div class="form-group">
-                    <label for="Sexo">Sexo</label><br>
+                    <label for="sexo">Sexo</label><br>
                      <div class="col-md-6">
                               <select class="form-control" name="sexo">
                                 @if ($cliente->sexo == "Masculino")
@@ -67,19 +63,20 @@
                             </div>
                 </div>
                 <div class="form-group">
-                    <label for="FechaIngreso">Fecha ingreso</label>
-                    <input type="date" class="form-control" id="FechaIngreso" value="{{ $cliente->FechaIngreso}}" name="FechaIngreso" placeholder="YYYY/DD/MM"></input>
+                    <label for="fecha_ingreso">Fecha ingreso</label>
+                    <input type="date" class="form-control" id="fecha_ingreso" value="{{ $cliente->FechaIngreso}}" name="fecha_ingreso" placeholder="YYYY/DD/MM"></input>
                 </div>
                 <div class="form-group">
-                    <label for="Descuento">Descuento</label>
-                    <input type="number" class="form-control" id="Descuento" name="Descuento" value="{{ $cliente->Descuento}}" placeholder="Descuento"></input>
+                    <label for="descuento">Descuento</label>
+                    <input type="number" class="form-control" id="descuento" name="descuento" value="{{ $cliente->Descuento}}" placeholder="Descuento"></input>
                 </div>
 
                 <div class="form-group">
                          <div class="col-md-6 col-md-offset-4">
-                            <input type="hidden" name="_method" value="put">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input class="btn btn-primary btn-block" type="submit" name="name" value="Editar">
+                           <input class="btn btn-primary btn-block" type="submit" value="Editar">
+                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                           <input type="hidden" name="_method" value="PUT">
+
                         </div>
                 </div>
             </form>

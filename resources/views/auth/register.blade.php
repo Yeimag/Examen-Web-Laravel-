@@ -25,10 +25,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">User Name</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -59,6 +59,14 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                        <!--div class="form-group">
+                            <label for="isAdmin" class="col-md-4 control-label">Administrador</label>
+                            <div class="col-md-6">
+                                <input type="radio" name="isAdmin" value="TRUE"> Yes<br>
+                                <input type="radio" name="isAdmin" value="FALSE"> No<br>
+                            </div>
+                        </div-->
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
