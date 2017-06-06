@@ -25,16 +25,16 @@
                                 <th scope="row">{{ $cliente->cedula }}</th>
                                 <th>{{ $cliente->nombre }}</th>
                                 <th>{{ $cliente->apellido }}</th>
-                                <th>{{ $cliente->fechaNacimiento }}</th>
+                                <th>{{ $cliente->fecha_nacimiento }}</th>
                                 <th>{{ $cliente->direccion }}</th>
-                                <th>{{ $cliente->estadoCivil }}</th>
-                                <th>{{ $cliente->Sexo }}</th>
-                                <th>{{ $cliente->fechaIngreso }}</th>
-                                <th>{{ $cliente->Descuento}}</th>
+                                <th>{{ $cliente->estado_civil }}</th>
+                                <th>{{ $cliente->sexo }}</th>
+                                <th>{{ $cliente->fecha_ingreso }}</th>
+                                <th>{{ $cliente->descuento}}</th>
                                 <th>
                                    <p>
-                                     <a href="/cliente/{{ $cliente->id }}/edit" class="btn btn-primary" role="button">Editar</a>
-                                     <a href="/cliente/{{ $cliente->id }}/delete" class="btn btn-primary" role="button">Eliminar</a>
+                                     <a href="/cliente/{{ $cliente->cedula }}/edit" class="btn btn-primary" role="button">Editar</a>
+                                     <a href="/cliente/{{ $cliente->cedula }}/delete" class="btn btn-primary" role="button">Eliminar</a>
                                   </p>
                                  </th>
                             </tr>
