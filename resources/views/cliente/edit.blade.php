@@ -5,7 +5,7 @@
             <form class="form-horizontal" role="form" action="/cliente/{{ $cliente->cedula }}" method="post">
                 <div class="form-group">
                     <label for="Cedula">Cedula</label>
-                    <input type="text" class="form-control" id="Cedula" name="Cedula" value="{{ $cliente->Cedula }}" placeholder="8-888-888" required="required" title="e.g 8-888-888" pattern="^\[0-9]{1}-[0-9]{3}-[0-9]{3}$">
+                    <input type="text" class="form-control" id="Cedula" name="Cedula" value="{{ $cliente->Cedula }}" placeholder="{{ $cliente->Cedula }}" required="required" title="e.g 8-888-888" pattern="^\[0-9]{1}-[0-9]{3}-[0-9]{3}$">
                 </div>
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>

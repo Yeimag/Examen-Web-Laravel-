@@ -95,17 +95,11 @@ class ClienteController extends Controller {
       if(!$cliente){
           abort(404);
       }
+      else{
+        return view('cliente.edit')->with('cliente',$cliente);
+      }
 
-      return view('cliente.edit')->with('clientes',$cliente);
-       /* $clientes = Cliente::where('cedula',$cedula)->first();
-
-        if(!$clientes){
-             abort(404);
-        }
-        else{
-          Cliente::where('cedula',$cedula)->update()
-        }
-        return response()->json(['mensaje' => 'modificada correctamente']);*/
+      
     }
 
     /**
@@ -145,20 +139,20 @@ class ClienteController extends Controller {
           'fecha_ingreso'=>'required',
           'descuento'=>'required',
       ]);
-      $clientes = Clientes::find($cedula);
-      $clientes->cedula = $request->cedula;
-      $clientes->nombre = $request->nombre;
-      $clientes->apellido = $request->apellido;
-      $clientes->fecha_nacimiento = $request->fecha_nacimiento;
+      $cliente = Clientes::find($cedula);
+      $cliente->cedula = $request->cedula;
+      $cliente->nombre = $request->nombre;
+      $cliente->apellido = $request->apellido;
+      $cliente->fecha_nacimiento = $request->fecha_nacimiento;
 
-      $clientes->direccion = $request->direccion;
-      $clientes->estado_civil = $request->estado_civil;
-      $clientes->sexo = $request->sexo;
-      $clientes->fecha_ingreso = $request->fecha_ingreso;
-      $clientes->descuento = $request->descuento;
-      $clientes->save();
+      $cliente->direccion = $request->direccion;
+      $cliente->estado_civil = $request->estado_civil;
+      $cliente->sexo = $request->sexo;
+      $cliente->fecha_ingreso = $request->fecha_ingreso;
+      $cliente->descuento = $request->descuento;
+      $cliente->save();
 
-      return redirect('clientes')->with('message','data has been updated!');
+      return redirect('cliente')->with('message','data has been updated!');
     }
 
     /**
@@ -167,18 +161,26 @@ class ClienteController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($cedula)
+    /*public function destroy($cedula)
     {
+        $clientes = Clientes::where('cedula', $cedula)->first();
         $clientes = Clientes::find($cedula);
         $clientes->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the client!');
-        return Redirect::to('clientes');
+        return redirect('cliente')->with('message','data has been updated!');
+    }*/
+    public function destroy($id)
+    {
+        //$deleted = Clientes::find($id);
+        //$deleted->delete();
+         $product = Clientes::find($id)->delete(); 
+        //Clientes::table('clientes')->where('cedula', $id)->delete();
+
+        ///$clientes = Clientes::$table('clientes')->get();
+
+        return view('cliente',['clientes' => $clientes]);
     }
 
-    public function retorno(){
-      return view('cliente.edit');
-    }
 
 }
