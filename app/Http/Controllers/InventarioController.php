@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
-use examenweblaravel;
+use App\Inventario;
+
 class InventarioController extends Controller {
 
     /*public function __construct()
@@ -18,11 +18,8 @@ class InventarioController extends Controller {
      */
     public function index()
     {
-       
-      $inventario = DB::table('inventario')->get();
-      return view('inventario.index',['inventario'=>$clientes]);
-        //return View::make('cliente.index',['clientes'=> $clientes]);
-        //return view('cliente.index', ['clientes'=>$clientes]);//
+      $inventarios = Inventario::all(); 
+      return view('inventario.index',['inventarios'=>$inventarios]);
     }
 
     /**
@@ -44,15 +41,13 @@ class InventarioController extends Controller {
     public function store(Request $request)
     {
         $this->validate($request,[
-          'id'=>'required',
           'productoID'=>'required',
           'cantidad'=>'required',
           'cantidad_min'=>'required',
           'cantidad_max'=>'required',
           'excepto'=>'required',
       ]);
-      $inventario = new Cliente;
-      $inventario->id = $request->id;
+      $inventario = new Inventario;
       $inventario->productoID = $request->productoID;
       $inventario->cantidad = $request->cantidad;
       $inventario->cantidad_min = $request->cantidad_min;
@@ -69,7 +64,7 @@ class InventarioController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         $inventario = Inventario::find($id);
         if(!$inventario){
@@ -78,7 +73,7 @@ class InventarioController extends Controller {
 
          return view('inventario.detail')->with('inventario',$inventario);
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
@@ -88,12 +83,12 @@ class InventarioController extends Controller {
      */
     public function edit($id)
     {
-        $inventario = Inventario::find($id);
+        /*$inventario = Inventario::find($id);
 
         if(!$inventario){
              abort(404);
         }
-        return view('inventario.edit')->with('inventario',$inventario);
+        return view('inventario.edit')->with('inventario',$inventario);*/
     }
 
     /**
@@ -104,24 +99,20 @@ class InventarioController extends Controller {
      */
     public function update(Request $request,$id)
     {
-        $this->validate($request,[
-          'id'=>'required',
-          'productoID'=>'required',
-          'cantidad'=>'required',
-          'cantidad_min'=>'required',
-          'cantidad_max'=>'required',
-          'excepto'=>'required',
-      ]);
-      $inventario = new Inventario;
-      $inventario->id = $request->id;
-      $inventario->productoID = $request->productoID;
-      $inventario->cantidad = $request->cantidad;
-      $inventario->cantidad_min = $request->cantidad_min;
-      $inventario->cantidad_max = $request->cantidad_max;
-      $inventario->excepto = $request->excepto;
-      $inventario->save();
+        $inventario = Inventario::where('id',$id)->first();
 
-      return redirect('inventario')->with('message','data has been updated!');
+        if (!$inventario) {
+          abort(404);
+        } else {
+          Inventario::where('id',$id)->update([
+            'productoID'=>$request->productoID,
+            'cantidad'=>$request->cantidad,
+            'cantidad_min'=>$request->cantidad_min,
+            'cantidad_max'=>$request->cantidad_max,
+            'excepto'=>$request->excepto
+            ]);
+          return response()->json(['mensaje' => 'data has been updated!']);
+        }
     }
 
     /**
@@ -138,6 +129,10 @@ class InventarioController extends Controller {
         // redirect
         Session::flash('message', 'Successfully deleted the client!');
         return Redirect::to('inventario');
+    }
+
+    public function retorno(){
+      return view('inventario.edit');
     }
 
 }

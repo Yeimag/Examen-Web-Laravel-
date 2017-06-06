@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
+use App\Clientes;
 
 class ClienteController extends Controller {
 
@@ -18,7 +18,7 @@ class ClienteController extends Controller {
      */
     public function index()
     { 
-      $clientes = Cliente::all(); 
+      $clientes = Clientes::all(); 
       return view('cliente.index',['clientes'=>$clientes]);
     }
 
@@ -50,7 +50,7 @@ class ClienteController extends Controller {
           'fecha_ingreso'=>'required',
           'descuento'=>'required',
       ]);
-      $clientes = new Cliente;
+      $clientes = new Clientes;
       $clientes->cedula = $request->cedula;
       $clientes->nombre = $request->nombre;
       $clientes->apellido = $request->apellido;
@@ -124,34 +124,8 @@ class ClienteController extends Controller {
             'sexo'=>$request->sexo,
             'fecha_ingreso'=>$request->fecha_ingreso,
             'descuento'=>$request->descuento]);
-          return response()->json(['mensaje' => 'modificada correctamente']);
+          return response()->json(['mensaje' => 'data has been updated!']);
         }
-        
-        /* $this->validate($request,[
-         'cedula'=>'required',
-          'nombre'=>'required',
-          'apellido'=>'required',
-          'fecha_nacimiento'=>'required',
-          'direccion'=>'required',
-          'estado_civil'=>'required',
-          'sexo'=>'required',
-          'fecha_ingreso'=>'required',
-          'descuento'=>'required',
-      ]);
-      $clientes = Cliente::find($cedula);
-      $clientes->cedula = $request->cedula;
-      $clientes->nombre = $request->nombre;
-      $clientes->apellido = $request->apellido;
-      $clientes->fecha_nacimiento = $request->fechaNacimiento;
-
-      $clientes->direccion = $request->direccion;
-      $clientes->estado_civil = $request->estadoCivil;
-      $clientes->sexo = $request->sexo;
-      $clientes->fecha_ingreso = $request->fechaIngreso;
-      $clientes->descuento = $request->descuento;
-      $clientes->save();
-
-      return redirect('clientes')->with('message','data has been updated!');*/
     }
 
     /**

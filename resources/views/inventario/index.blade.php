@@ -3,6 +3,7 @@
 <div class="container">
     <div class="row">
             <div class="panel-body">
+              <a href="/inventario/create" class="btn btn-primary" role="button">Nuevo</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -16,18 +17,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($inventario as $key => $value)
+                        @foreach($inventarios as $inventario)
                             <tr>
                                 <th scope="row">{{ $inventario->id }}</th>
-                                <th>{{ $inventario->id  }}</th>
                                 <th>{{ $inventario->productoID  }}</th>
                                 <th>{{ $inventario->cantidad  }}</th>
                                 <th>{{ $inventario->cantidad_min  }}</th>
                                 <th>{{ $inventario->cantidad_max }}</th>
                                 <th>{{ $inventario->excepto }}</th>
                                 <td>
-                                    <a class="btn btn-small btn-info" href="{{ URL::to('inventario/' . $value->id . '/edit') }}">Edit</a>
-                                    <a class="btn btn-small btn-info" href="{{ URL::to('inventario/' . $value->id . '/delete') }}">Delete</a>
+                                    <a  href="/inventario/{{ $inventario->id}}/edit" class="btn btn-small btn-info">Edit</a>
+                                    <a href="/inventario/{{ $inventario->id }}/delete" class="btn btn-small btn-info" >Delete</a>
                                 </td>
                             </tr>
                         @endforeach

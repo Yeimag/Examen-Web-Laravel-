@@ -52,7 +52,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-        ]/*,
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -65,7 +65,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ]/*,
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

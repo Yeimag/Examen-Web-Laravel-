@@ -3,29 +3,34 @@
     <div class="container">
         <div class="row">
             <form class="form-horizontal" role="form" action="/inventario/{{ $inventario->id }}" method="post">
-                {!! csrf_field() !!}
                 <div class="form-group">
-                    <label for="Producto">Producto</label>
-                    <input type="text" class="form-control" id="Producto" name="Producto" placeholder="Producto">
+                    <label for="productoID">Producto</label>
+                    <input type="number" class="form-control" id="productoID" name="productoID" placeholder="ID Producto">
                 </div>
                 <div class="form-group">
-                    <label for="Cantidad">Cantidad</label>
-                    <input type="number" class="form-control" id="Cantidad" name="Cantidad" placeholder="Cantidad"></input>
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad"></input>
                 </div>
                 <div class="form-group">
-                    <label for="CantidadMinima">Cantidad Minima</label>
-                    <input type="number" class="form-control" id="CantidadMinima" name="CantidadMinima" placeholder="CantidadMinima"></input>
+                    <label for="cantidad_min">Cantidad Minima</label>
+                    <input type="number" class="form-control" id="cantidad_min" name="cantidad_min" placeholder="Cantidad Minima"></input>
                 </div>
                 <div class="form-group">
-                    <label for="CantidadMaxima">Cantidad Maxima</label>
-                    <input type="number" class="form-control" id="CantidadMaxima" name="CantidadMaxima" placeholder="CantidadMaxima"></input>
+                    <label for="cantidad_max">Cantidad Maxima</label>
+                    <input type="number" class="form-control" id="cantidad_max" name="cantidad_max" placeholder="Cantidad Maxima"></input>
                 </div>
 
                 <div class="form-group">
-                    <label for="Gravado">Gravado o excepto</label>
-                    <input type="number" class="form-control" id="Gravado" name="Gravado" placeholder="Gravado"></input>
+                    <label for="excepto">Gravado o excepto</label>
+                    <input type="number" class="form-control" id="excepto" name="excepto" placeholder="Gravado"></input>
                 </div>
-                <button type="submit" class="btn btn-default">Guardar</button>
+                <div class="form-group">
+                         <div class="col-md-6 col-md-offset-4">
+                            <input type="hidden" name="_method" value="put">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input class="btn btn-primary btn-block" type="submit" name="name" value="Editar">
+                        </div>
+                </div>
             </form>
         </div>
     </div>
