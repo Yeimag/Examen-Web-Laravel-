@@ -90,12 +90,15 @@ class ClienteController extends Controller {
      */
     public function edit($cedula)
     {
-        $clientes = Cliente::find($cedula);
+       /* $clientes = Cliente::where('cedula',$cedula)->first();
 
         if(!$clientes){
              abort(404);
         }
-        return view('cliente.edit')->with('cliente',$clientes);
+        else{
+          Cliente::where('cedula',$cedula)->update()
+        }
+        return response()->json(['mensaje' => 'modificada correctamente']);*/
     }
 
     /**
@@ -106,8 +109,26 @@ class ClienteController extends Controller {
      */
     public function update(Request $request,$cedula)
     {
-        $this->validate($request,[
-          'cedula'=>'required',
+        $clientes = Cliente::where('cedula',$cedula)->first();
+
+        if(!$clientes){
+             abort(404);
+        }
+        else{
+          Cliente::where('cedula',$cedula)->update(['cedula'=>$request->cedula,
+            'nombre'=>$request->nombre,
+            'apellido'=>$request->apellido,
+            'fecha_nacimiento'=>$request->fecha_nacimiento,
+            'direccion'=>$request->direccion,
+            'estado_civil'=>$request->estado_civil,
+            'sexo'=>$request->sexo,
+            'fecha_ingreso'=>$request->fecha_ingreso,
+            'descuento'=>$request->descuento]);
+          return response()->json(['mensaje' => 'modificada correctamente']);
+        }
+        
+        /* $this->validate($request,[
+         'cedula'=>'required',
           'nombre'=>'required',
           'apellido'=>'required',
           'fecha_nacimiento'=>'required',
@@ -122,6 +143,7 @@ class ClienteController extends Controller {
       $clientes->nombre = $request->nombre;
       $clientes->apellido = $request->apellido;
       $clientes->fecha_nacimiento = $request->fechaNacimiento;
+
       $clientes->direccion = $request->direccion;
       $clientes->estado_civil = $request->estadoCivil;
       $clientes->sexo = $request->sexo;
@@ -129,7 +151,7 @@ class ClienteController extends Controller {
       $clientes->descuento = $request->descuento;
       $clientes->save();
 
-      return redirect('clientes')->with('message','data has been updated!');
+      return redirect('clientes')->with('message','data has been updated!');*/
     }
 
     /**
@@ -146,6 +168,10 @@ class ClienteController extends Controller {
         // redirect
         Session::flash('message', 'Successfully deleted the client!');
         return Redirect::to('clientes');
+    }
+
+    public function retorno(){
+      return view('cliente.edit');
     }
 
 }
