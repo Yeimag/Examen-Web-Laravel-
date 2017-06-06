@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
+use App\Clientes;
 
 class ClienteController extends Controller {
 
@@ -18,7 +18,7 @@ class ClienteController extends Controller {
      */
     public function index()
     { 
-      $clientes = Cliente::all(); 
+      $clientes = Clientes::all(); 
       return view('cliente.index',['clientes'=>$clientes]);
     }
 
@@ -90,6 +90,13 @@ class ClienteController extends Controller {
      */
     public function edit($cedula)
     {
+      $cliente = Cliente::find($cedula);
+
+      if(!$cliente){
+          abort(404);
+      }
+
+      return view('cliente.edit')->with('cliente',$cliente);
        /* $clientes = Cliente::where('cedula',$cedula)->first();
 
         if(!$clientes){
@@ -109,7 +116,7 @@ class ClienteController extends Controller {
      */
     public function update(Request $request,$cedula)
     {
-        $clientes = Cliente::where('cedula',$cedula)->first();
+        /*$clientes = Cliente::where('cedula',$cedula)->first();
 
         if(!$clientes){
              abort(404);
@@ -125,9 +132,9 @@ class ClienteController extends Controller {
             'fecha_ingreso'=>$request->fecha_ingreso,
             'descuento'=>$request->descuento]);
           return response()->json(['mensaje' => 'modificada correctamente']);
-        }
+        }*/
         
-        /* $this->validate($request,[
+       $this->validate($request,[
          'cedula'=>'required',
           'nombre'=>'required',
           'apellido'=>'required',
@@ -142,16 +149,16 @@ class ClienteController extends Controller {
       $clientes->cedula = $request->cedula;
       $clientes->nombre = $request->nombre;
       $clientes->apellido = $request->apellido;
-      $clientes->fecha_nacimiento = $request->fechaNacimiento;
+      $clientes->fecha_nacimiento = $request->fecha_nacimiento;
 
       $clientes->direccion = $request->direccion;
-      $clientes->estado_civil = $request->estadoCivil;
+      $clientes->estado_civil = $request->estado_civil;
       $clientes->sexo = $request->sexo;
-      $clientes->fecha_ingreso = $request->fechaIngreso;
+      $clientes->fecha_ingreso = $request->fecha_ingreso;
       $clientes->descuento = $request->descuento;
       $clientes->save();
 
-      return redirect('clientes')->with('message','data has been updated!');*/
+      return redirect('clientes')->with('message','data has been updated!');
     }
 
     /**
