@@ -50,7 +50,7 @@ class ClienteController extends Controller {
           'fecha_ingreso'=>'required',
           'descuento'=>'required',
       ]);
-      $clientes = new Cliente;
+      $clientes = new Clientes;
       $clientes->cedula = $request->cedula;
       $clientes->nombre = $request->nombre;
       $clientes->apellido = $request->apellido;
@@ -62,7 +62,7 @@ class ClienteController extends Controller {
       $clientes->descuento = $request->descuento;
       $clientes->save();
 
-      return redirect('clientes')->with('message','data has been updated!');
+      return redirect('cliente')->with('message','data has been updated!');
     }
 
     /**
@@ -90,13 +90,13 @@ class ClienteController extends Controller {
      */
     public function edit($cedula)
     {
-      $cliente = Cliente::find($cedula);
+      $cliente = Clientes::find($cedula);
 
       if(!$cliente){
           abort(404);
       }
 
-      return view('cliente.edit')->with('cliente',$cliente);
+      return view('cliente.edit')->with('clientes',$cliente);
        /* $clientes = Cliente::where('cedula',$cedula)->first();
 
         if(!$clientes){
@@ -145,7 +145,7 @@ class ClienteController extends Controller {
           'fecha_ingreso'=>'required',
           'descuento'=>'required',
       ]);
-      $clientes = Cliente::find($cedula);
+      $clientes = Clientes::find($cedula);
       $clientes->cedula = $request->cedula;
       $clientes->nombre = $request->nombre;
       $clientes->apellido = $request->apellido;
@@ -169,7 +169,7 @@ class ClienteController extends Controller {
      */
     public function destroy($cedula)
     {
-        $clientes = Cliente::find($cedula);
+        $clientes = Clientes::find($cedula);
         $clientes->delete();
 
         // redirect
