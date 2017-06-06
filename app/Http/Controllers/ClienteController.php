@@ -62,7 +62,7 @@ class ClienteController extends Controller {
       $clientes->descuento = $request->descuento;
       $clientes->save();
 
-      return redirect('clientes')->with('message','data has been updated!');
+      return redirect('cliente')->with('message','data has been updated!');
     }
 
     /**
@@ -90,15 +90,16 @@ class ClienteController extends Controller {
      */
     public function edit($cedula)
     {
-       /* $clientes = Cliente::where('cedula',$cedula)->first();
+      $cliente = Clientes::find($cedula);
 
-        if(!$clientes){
-             abort(404);
-        }
-        else{
-          Cliente::where('cedula',$cedula)->update()
-        }
-        return response()->json(['mensaje' => 'modificada correctamente']);*/
+      if(!$cliente){
+          abort(404);
+      }
+      else{
+        return view('cliente.edit')->with('cliente',$cliente);
+      }
+
+      
     }
 
     /**
@@ -124,8 +125,10 @@ class ClienteController extends Controller {
             'sexo'=>$request->sexo,
             'fecha_ingreso'=>$request->fecha_ingreso,
             'descuento'=>$request->descuento]);
+
           return response()->json(['mensaje' => 'data has been updated!']);
         }
+
     }
 
     /**
@@ -134,18 +137,26 @@ class ClienteController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($cedula)
+    /*public function destroy($cedula)
     {
-        $clientes = Cliente::find($cedula);
+        $clientes = Clientes::where('cedula', $cedula)->first();
+        $clientes = Clientes::find($cedula);
         $clientes->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the client!');
-        return Redirect::to('clientes');
+        return redirect('cliente')->with('message','data has been updated!');
+    }*/
+    public function destroy($id)
+    {
+        //$deleted = Clientes::find($id);
+        //$deleted->delete();
+         $product = Clientes::find($id)->delete(); 
+        //Clientes::table('clientes')->where('cedula', $id)->delete();
+
+        ///$clientes = Clientes::$table('clientes')->get();
+
+        return view('cliente',['clientes' => $clientes]);
     }
 
-    public function retorno(){
-      return view('cliente.edit');
-    }
 
 }

@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+//Route::delete('/bu', 'ClienteController@delete(cedula)');
+
 Route::group(['middleware' => ['web']], function(){
     Route::resource('/cliente', 'ClienteController');
 });
@@ -31,6 +34,10 @@ Route::group(['middleware' => ['web']], function(){
 Route::group(['middleware' => ['web']], function(){
     Route::resource('/producto', 'ProductosController');
 });
+
+
+Route::get('/destroyCliente/{id}', 'ClienteController@destroy');
+
 
 //Route::resource('clientes', 'ClienteController');
 

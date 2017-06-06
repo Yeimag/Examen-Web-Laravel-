@@ -33,8 +33,8 @@
                                 <th>{{ $cliente->descuento}}</th>
                                 <th>
                                    <p>
-                                     <a href="/cliente/{{ $cliente->cedula }}/edit" class="btn btn-primary" role="button">Editar</a>
-                                     <a href="/cliente/{{ $cliente->cedula }}/delete" class="btn btn-primary" role="button">Eliminar</a>
+                                     <a href="/cliente/{{ $cliente->cedula }}/edit" class="btn btn-primary"  role="button">Editar</a>
+                                     <a href="{{url('/destroyCliente',[$cliente->cedula])}}" class="btn btn-primary" role="button">Eliminar</a>
                                   </p>
                                  </th>
                             </tr>
