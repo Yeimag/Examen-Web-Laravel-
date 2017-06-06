@@ -3,11 +3,10 @@
 <div class="container">
     <div class="row">
             <div class="panel-body">
-              <a href="/inventario/create" class="btn btn-primary" role="button">Nuevo</a>
+              <a href="{{ route('inventario.create') }}" class="btn btn-primary" role="button">Nuevo</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                           <th>ID</th>
                            <th>Producto</th>
                            <th>Cantidad</th>
                            <th>Cantidad Minima</th>
@@ -19,16 +18,24 @@
                     <tbody>
                         @foreach($inventarios as $inventario)
                             <tr>
-                                <th scope="row">{{ $inventario->id }}</th>
                                 <th>{{ $inventario->productoID  }}</th>
                                 <th>{{ $inventario->cantidad  }}</th>
                                 <th>{{ $inventario->cantidad_min  }}</th>
                                 <th>{{ $inventario->cantidad_max }}</th>
                                 <th>{{ $inventario->excepto }}</th>
-                                <td>
-                                    <a  href="/inventario/{{ $inventario->id}}/edit" class="btn btn-small btn-info">Edit</a>
-                                    <a href="/inventario/{{ $inventario->id }}/delete" class="btn btn-small btn-info" >Delete</a>
-                                </td>
+                                <th>
+                                  <p>
+                                     <a href="{{route('inventario.index')}}/{{ $inventario->productoID }}/edit" class="btn btn-primary" role="button">Editar</a>
+                                     
+                                     <form action="{{route('inventario.index')}}/{{ $inventario->productoID }}" method="POST">
+                                       <input type="submit" value="Eliminar">
+                                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                       <input type="hidden" name="_method" value="DELETE">
+                                     </form>
+
+                                     <!--a href="{{route('cliente.index')}}/{{ $cliente->cedula }}" class="btn btn-primary" role="button">Eliminar</a-->
+                                  </p>
+                                </th>
                             </tr>
                         @endforeach
                     </tbody>
@@ -37,3 +44,4 @@
     </div>
 </div>
 @stop
+                                   
